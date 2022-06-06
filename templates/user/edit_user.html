@@ -1,0 +1,30 @@
+{%load static%}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" href="{%static '/img/favicon.png' %}">
+    <!---->
+    <link href="{%static '/css/user.css' %}" rel="stylesheet">
+
+    <title>Editar usuário</title>
+  </head>
+  <body>
+  <!--NAVBAR-->
+  {% include 'user/user_navbars/user_edit_base.html'%}
+  <!--FORM-->
+  {% include 'user/snippets/user_snippet_edit.html' %}
+  <!--END FORM-->
+  <footer class="bg-light text-center text-lg-start">
+  <!-- Copyright -->
+    <!--JAVA SCRIPT-->
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <!----->
+  </body>
+</html>

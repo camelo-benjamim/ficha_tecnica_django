@@ -1,0 +1,35 @@
+<!doctype html>
+{%load static%}
+{% load crispy_forms_tags %}
+
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+    <title>Erro ao deletar</title>
+  </head>
+  <body>
+    {% include 'user/user_navbars/deleted_usr.html'%}
+    <!--NEED DIV STYLE AND BUTTON TO SAVE!-->
+    {% block content %}
+    <div class="container">
+      <h2 class="bg-warning text-dark text-center">Para deletar seu usuário, informe corretamente o username do mesmo</h2>
+      <div class="container-sm w-50 text-center">
+        <h3>Queremos que continue usando nossa plataforma, porém caso realmente deseje deletar seu usuário, clique no botão abaixo:</h3>
+        <a class="btn btn-warning" href="/auth/user_delete/">Clique me</a>
+      </div>
+    </div>
+    
+    {%endblock %}
+    
+    <!--JAVA SCRIPT-->
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <!----->
+  </body>
+</html>
