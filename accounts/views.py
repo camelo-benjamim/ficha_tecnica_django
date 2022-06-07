@@ -15,14 +15,14 @@ def SignUp(request):
         }
         return render(request,"user/adduser.html", context=context)
     else:
-        form = UserCreationForm(request.POST)
+        form = UserCreationForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             email = form.cleaned_data.get('email')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=email, password=raw_password)
             login(request, user)
-            return redirect("/meus_produtos/")
+            return redirect("/")
             ##REDIRECIONAR PARA DASHBOARD
         
         context = {
@@ -54,8 +54,7 @@ def ChangeUsr(request):
                 post.save()
                 return redirect ('/')
             
-        
-        return render(request, 'user/edit_user.html', {'form': form, 'post' : post})
+        return render(request, 'user/edit_user.html', {'form': form, 'post' : post,'logo': usr.logo,})
 
 @login_required
 def usrDelete(request):
@@ -74,7 +73,7 @@ def usrDelete(request):
             form = UserDeleteForm(request.POST)
             ## if user = request.user
             user = form['email'].value()
-            u = Account.objects.get(username=user)
+            u = Account.objects.get(email=user)
             u.delete()
             request.session['usuario_deletado'] = user
             return redirect ('/auth/user_deleted/')
