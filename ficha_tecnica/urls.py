@@ -6,5 +6,6 @@ from ficha_tecnica.views import *
 
 urlpatterns = [
     path('', mainView),
+    path('adicionar_prato/',adicionarPrato),
 
 ]

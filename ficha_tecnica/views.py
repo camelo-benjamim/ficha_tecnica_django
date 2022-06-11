@@ -19,18 +19,16 @@ def mainView(request):
         'status': status,
                             }
     else:
-        if contador_pratos == 1:
-            matriz = "uni"
-        else:
-            if contador_pratos % 3 == 0:
-                matriz = "te"
-            elif contador_pratos % 2 == 0:
-                matriz = "dune"
         context = {
         'status': status,
         'pratos': pratos_usuario,
         'quant_pratos': contador_pratos,
-        'matriz': matriz,
                   }
     
     return render(request, 'index.html', context=context)
+
+def adicionarPrato(request):
+    context = {
+        'a': 'a'
+    }
+    return render(request,'ficha_tecnica/pratos/adicionar_prato.html',context=context)

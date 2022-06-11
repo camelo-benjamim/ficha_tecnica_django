@@ -17,6 +17,9 @@ class Prato(models.Model):
     preco_de_venda =  models.DecimalField(max_digits=5,decimal_places=2)
     ##modificar atributo lucro para eliminar erro
     ##CUSTO TOTAL,LUCRO E CMV
+
+    def __str__(self):
+        return self.nome_do_prato
 class Ingredientes(models.Model):
     prato = models.ForeignKey(Prato,on_delete=models.CASCADE)
     nome_ingrediente = models.CharField(max_length=125)
@@ -24,4 +27,7 @@ class Ingredientes(models.Model):
     quantidade_bruta = models.DecimalField(max_digits=5,decimal_places=1)
     quantidade_liquida = models.DecimalField(max_digits=5,decimal_places=1)
     preco_unitario =  models.DecimalField(max_digits=5,decimal_places=2)
+
+    def __str__(self):
+        return self.nome_ingrediente
    
