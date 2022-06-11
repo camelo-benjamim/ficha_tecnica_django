@@ -41,20 +41,15 @@ def ChangeUsr(request):
         post = get_object_or_404(Account, pk=id_usr)
         form = UserChangeForm(instance=post)
         if(request.method == 'POST'):
-            form = UserChangeForm(request.POST,request.FILES,instance=post)
+            form = UserChangeForm(request.POST,instance=post)
             if(form.is_valid()):
                 post = form.save(commit=False)
                 post.email = form.cleaned_data['email']
-                post.logo = form.cleaned_data['logo']
-                post.proprietario = form.cleaned_data['proprietario']
                 post.nome_empresa = form.cleaned_data['nome_empresa']
-                post.cnpj = form.cleaned_data['cnpj']
-                post.celular = form.cleaned_data['celular']
-                post.segmento_empresa = form.cleaned_data['segmento_empresa']
                 post.save()
                 return redirect ('/')
             
-        return render(request, 'user/edit_user.html', {'form': form, 'post' : post,'logo': usr.logo,})
+        return render(request, 'user/edit_user.html', {'form': form, 'post' : post,})
 
 @login_required
 def usrDelete(request):

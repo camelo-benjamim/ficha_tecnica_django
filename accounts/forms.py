@@ -7,16 +7,15 @@ from django.contrib.auth import admin as adm
 class UserCreationForm(forms.UserCreationForm):
     class Meta(forms.UserCreationForm.Meta):
         model = Account
-        fields = ("email","proprietario","nome_empresa","segmento_empresa","cnpj","celular","logo","password1","password2")
-        labels = { 'email':('Email: '),'nome_empresa': ('Nome da sua empresa (seu negócio): '),'segmento_empresa': ('Segmento da empresa (que sua empresa atua): '),'cnpj':('CNPJ: '), 'celular': ('Número de telefone (incluindo DDD): '),'proprietario': ('Nome do proprietário: '),'logo':('Logo: '),}
-        help_texts = {'segmento_empresa':('Por favor escolha o segmento do seu negócio abaixo: '),'celular': ('Por favor, incluir o ddd. Ex: 87999999999'),}
+        fields = ("email","nome_empresa","password1","password2")
+        labels = { 'email':('Email: '),'nome_empresa': ('Nome da sua empresa (seu negócio): '),}
     
 class UserChangeForm(forms.UserChangeForm):
     password = forms.ReadOnlyPasswordHashField()
     class Meta(forms.UserChangeForm.Meta):
         model = Account
-        fields = ("email","proprietario","nome_empresa","segmento_empresa","cnpj","celular","logo")
-        labels = { 'email':('Email: '),'nome_empresa': ('Nome da sua empresa (seu negócio): '),'segmento_empresa': ('Segmento da empresa (que sua empresa atua): '),'cnpj':('CNPJ: '), 'celular': ('Número de telefone (incluindo DDD): '),'proprietário': ('Nome do proprietário: '),'logo':('Logo: '),}
+        fields = ("email","nome_empresa",)
+        labels = { 'email':('Email: '),'nome_empresa': ('Nome da sua empresa (seu negócio): '),}
         def clean_password(self):
             return self.initial["password"]
 

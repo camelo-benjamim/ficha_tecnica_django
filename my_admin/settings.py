@@ -33,15 +33,13 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     #my_apps:
     'accounts',
-    'gerenciamento',
-    'devices_request',
+    'ficha_tecnica',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
     ##third apps
     'crispy_forms',
     ##DJANGO FILTER QUERYSETS
@@ -49,11 +47,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    ##DJANGO WHITENOISE MIDDLEWARE
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    ##
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -136,8 +130,6 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
-
-##STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage' 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Default primary key field type

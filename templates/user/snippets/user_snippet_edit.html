@@ -2,18 +2,13 @@
 {% load crispy_forms_tags %}
 
 <div class="container-sm">
-    <h1 class="text-center my-2">Editar Informações:</h1>
-    <form action="." method="post" class="form-group" enctype="multipart/form-data">
+    <h1 class="text-center my-2 text-danger">Editar Informações:</h1>
+    <form action="." method="post" class="row justify-content-center" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class="container-fluid mx-1 my-4">
-    <h2>Informações de identificação</h2>
+    <h2 class="text-center my-2">Informações de identificação</h2>
+    <div class="w-50">
       {{form.email|as_crispy_field}}
-      {{form.proprietario|as_crispy_field}}
-      {{form.cnpj|as_crispy_field}}
       {{form.nome_empresa|as_crispy_field}}
-      {{form.segmento_empresa|as_crispy_field}}
-      {{form.celular|as_crispy_field}}
-      {{form.logo|as_crispy_field}}
 
       {% if messages %}
 
@@ -24,12 +19,12 @@
             {% endfor %}
 
       {% endif %}
-    <h2 class="my-4">Alteração de senha: </h2>
-      <a href="/auth/user/password_change/">Editar Senha de usuário</a>
-      
-      
-      <div class="container-fluid my-2 text-center">
+    <div class="text-center mb-2 mt-4">
       <input type="submit" value="Salvar" class="btn btn-primary">
+    <div>
+    <h2 class="mt-4 text-center">Alteração de senha: </h2>
+      <div class="row justify-content-center">
+        <a class="text-center text-danger" href="/auth/user/password_change/">Editar Senha de usuário</a>
       </div>
     </form>
   </div>
