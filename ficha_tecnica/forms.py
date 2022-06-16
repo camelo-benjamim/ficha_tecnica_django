@@ -23,3 +23,4 @@ class FormIngredientes(forms.ModelForm):
         fields = ['nome_ingrediente','prato','classificar_tamanho','quantidade_bruta','quantidade_liquida','preco_unitario']
         labels = {'nome_ingrediente':('Nome do ingrediente: '), 'classificar_tamanho':('Classificar tamanho: '),'quantidade_bruta':('Quantidade bruta:'),'quantidade_liquida':('Quantidade líquida:'),'preco_unitario':('Preço unitário: ')}
     
+

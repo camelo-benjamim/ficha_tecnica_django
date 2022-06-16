@@ -1,0 +1,74 @@
+{% load static %}
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>{{nome_do_prato}}</title>
+  </head>
+  <body>
+        {% include 'ficha_tecnica/navbars/navbar_logged.html'%}
+        <div class="container-sm text-center">
+            <h2 class="text-center my-4">{{nome_do_prato}}:</h2>
+            <div class="row justify-content-center">
+                <div class="card my-1 mx-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Custo de produção</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">R$ {{custo_total}}</h6>
+                    </div>
+              </div>
+                <div class="card my-1 mx-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Lucro total: </h5>
+                      <h6 class="card-subtitle mb-2 text-muted">R$ {{lucro}}</h6>
+                    </div>
+                  </div>
+                <div class="card my-1 mx-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">CMV: </h5>
+                      <h6 class="card-subtitle mb-2 text-muted">{{cmv}} % </h6>
+                    </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="container text-center">
+            <h2 class="text-center my-2 text-danger">Ingredientes: </h2>
+            <div class="row justify-content-center">
+                {% for ingrediente in ingredientes %}
+                    <div class="card  my-2 mx-4" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title text-center">{{ingrediente}}</h5>
+                          <div class="container text-center">
+                            <a href="../../editar_ingrediente/{{ingrediente.id}}/" class="btn btn-secondary">Editar</a>
+                            <a href="../../apagar_ingrediente/{{ingrediente.id}}/" class="btn btn-danger">Apagar</a>
+                          </div>
+                      </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a href="../../adicionar_ingrediente/" type="button" class="btn btn-success my-4">Adicionar</a>
+        </div>
+        {% if quant_total_ingredientes > 3%}
+        {% include 'user/footers/responsive.html' %}
+        {% else %}
+        {% include 'user/footers/fixed.html' %}
+        {% endif %}
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

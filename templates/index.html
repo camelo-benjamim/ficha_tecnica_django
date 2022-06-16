@@ -25,10 +25,21 @@
       <div class="row justify-content-center my-4">
         <!--DISTRIBUIR PRATOS NA COMO UMA MATRIZ-->
         {% for prato in pratos %}
-          <div class="card" style="width: 18rem;">
+          <div class="card mx-1 my-1" style="width: 18rem;">
             <div class="card-body text-center">
               <h5 class="card-title">{{prato.nome_do_prato}}</h5>
-              <a href="#" class="btn btn-primary">Visualizar</a>
+              <div class="d-flex justify-content-md-center">
+                <a href="visualizar_prato/{{prato.id}}" class="btn btn-primary mx-1">Visualizar</a>
+                <div class="dropdown mx-1">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Editar
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="/editar_prato/{{prato.id}}/">Alterar prato</a></li>
+                    <li><a class="dropdown-item text-light bg-danger" href="/remover_prato/{{prato.id}}/">Deletar prato</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         {% endfor %} 
