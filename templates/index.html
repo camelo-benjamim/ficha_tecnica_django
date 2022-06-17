@@ -14,51 +14,57 @@
   <body>
     {% if status == "y" %}
       {% include 'ficha_tecnica/navbars/navbar_logged.html' %}
+      <div class="container">
+        {% if pratos  %}
+          <h2 class="text-center my-2">Meus pratos: </h2>
+          <div class="row justify-content-center my-4">
+            <!--DISTRIBUIR PRATOS NA COMO UMA MATRIZ-->
+            {% for prato in pratos %}
+              <div class="card mx-1 my-1" style="width: 18rem;">
+                <div class="card-body text-center">
+                  <h5 class="card-title">{{prato.nome_do_prato}}</h5>
+                  <div class="d-flex justify-content-md-center">
+                    <a href="visualizar_prato/{{prato.id}}" class="btn btn-primary mx-1">Visualizar</a>
+                    <div class="dropdown mx-1">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Editar
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="/editar_prato/{{prato.id}}/">Alterar prato</a></li>
+                        <li><a class="dropdown-item text-light bg-danger" href="/remover_prato/{{prato.id}}/">Deletar prato</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %} 
+        </div>
+        <div class="text-center">
+          <a href="adicionar_prato/" class="btn btn-success">Adicionar prato</a>
+        </div>
+          {% if quant_pratos > 12%}
+            {% include 'user/footers/responsive.html' %}
+          {% else %}
+            {% include 'user/footers/fixed.html' %}
+          {% endif %}
+        {% else %}
+        <div class="container-fluid text-center w-75">
+          <h3 class="text-center my-2">Você não possui nenhum prato, clique para adicionar!</h3>
+          <a href="adicionar_prato/" class="btn btn-success">Adicionar prato</a>
+        </div>
+        {% include 'user/footers/fixed.html'%}
+        {% endif %}
     {% else %}
       {% include 'ficha_tecnica/navbars/navbar_not_logged.html' %}
+        <div class="container">
+          <h2 class="text-center my-2 text-danger">My admin:</h2>
+          <h3 class="text-center my-1">Tenha total controle dos seus gastos de produção com o my admin</h3>
+        </div>
+      {% include 'user/footers/fixed.html' %}
     {% endif %}
    
     <!--PRATOS-->
-    <div class="container">
-    {% if pratos  %}
-      <h2 class="text-center my-2">Meus pratos: </h2>
-      <div class="row justify-content-center my-4">
-        <!--DISTRIBUIR PRATOS NA COMO UMA MATRIZ-->
-        {% for prato in pratos %}
-          <div class="card mx-1 my-1" style="width: 18rem;">
-            <div class="card-body text-center">
-              <h5 class="card-title">{{prato.nome_do_prato}}</h5>
-              <div class="d-flex justify-content-md-center">
-                <a href="visualizar_prato/{{prato.id}}" class="btn btn-primary mx-1">Visualizar</a>
-                <div class="dropdown mx-1">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Editar
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="/editar_prato/{{prato.id}}/">Alterar prato</a></li>
-                    <li><a class="dropdown-item text-light bg-danger" href="/remover_prato/{{prato.id}}/">Deletar prato</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        {% endfor %} 
-    </div>
-    <div class="text-center">
-      <a href="adicionar_prato/" class="btn btn-success">Adicionar prato</a>
-    </div>
-      {% if quant_pratos > 12%}
-        {% include 'user/footers/responsive.html' %}
-      {% else %}
-        {% include 'user/footers/fixed.html' %}
-      {% endif %}
-    {% else %}
-    <div class="container-fluid text-center w-75">
-      <h3 class="text-center my-2">Você não possui nenhum prato, clique para adicionar!</h3>
-      <a href="adicionar_prato/" class="btn btn-success">Adicionar prato</a>
-    </div>
-    {% include 'user/footers/fixed.html'%}
-    {% endif %}
+    
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
