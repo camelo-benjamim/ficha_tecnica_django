@@ -56,11 +56,24 @@
         {% endif %}
     {% else %}
       {% include 'ficha_tecnica/navbars/navbar_not_logged.html' %}
-        <div class="container">
-          <h2 class="text-center my-2 text-danger">My admin:</h2>
-          <h3 class="text-center my-1">Tenha total controle dos seus gastos de produção com o my admin</h3>
+        <div class="container" style="max-width: 500px;" >
+          <h1 class="text-center my-2 text-danger">My admin:</h1>
+          <h3 class="text-center">Gerencie melhor sua produção e maximize seus lucros!</h3>
+          <p class="text-center my-2">My admin é uma aplicação de ficha técnica, a mesma é utilizada com a finalidade de exibir coisas que antes não eram percebidas: <br>
+          como o valor gasto para produzir determinado prato, o lucro e a margem de lucro em cima do mesmo produto.</p>
+          <h3 class="text-center">Como o My admin faz isso? </h3>
+          <p class="text-center my-2">O my admin faz isso através de calculos, funciona como uma planilha... <br>
+          Você insere os ingredientes, o valor e a quantidade gastas (dos mesmos) e a partir daí são realizados os cálculos dos seus rendimentos sobre um determinado prato ou produto.</p>
+          <h3 class="text-center my-2">Quero usar o My admin: </h3>
+          <div class="container-sm text-center">
+            <a href="auth/" type="button" class="btn btn-primary my-2">Cadastrar</a>
+            <br>
+            Caso já seja usuário, clique no botão abaixo: 
+            <br>
+            <a href="auth/user/login" type="button" class="btn btn-success my-2">Login</a>
+          </div>
         </div>
-      {% include 'user/footers/fixed.html' %}
+      {% include 'user/footers/responsive.html' %}
     {% endif %}
    
     <!--PRATOS-->

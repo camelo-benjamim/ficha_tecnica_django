@@ -4,6 +4,7 @@ from django.shortcuts import render,redirect
 from ficha_tecnica.models import *
 from django.shortcuts import get_object_or_404
 from ficha_tecnica.forms import *
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def mainView(request):
@@ -36,8 +37,9 @@ def mainView(request):
     return render(request, 'index.html', context=context)
 
 ##pratos
+@login_required
 def visualizar_prato(request,prato_id):
-    prato = get_object_or_404(Prato,id=prato_id)
+    prato = get_object_or_404(Prato,id=prato_id,usuario=request.user)
     request.session['prato_id'] = prato.id
     nome_do_prato = prato.nome_do_prato
     ingredientes = Ingredientes.objects.filter(prato=prato)
@@ -68,7 +70,7 @@ def visualizar_prato(request,prato_id):
     context = {'ingredientes': ingredientes,'custo_total': custo_total,'lucro': lucro, 'cmv': cmv,'nome_do_prato': nome_do_prato,'quant_total_ingredientes': quant_total_ingredientes,}
     return render(request,'ficha_tecnica/pratos/visualizar_prato.html',context=context)
 
-
+@login_required
 def adicionarPrato(request):
     if request.method == "GET":
         form = FormPrato()
@@ -81,8 +83,9 @@ def adicionarPrato(request):
         'form': form,
     }
     return render(request,'ficha_tecnica/pratos/adicionar_prato.html',context=context)
+@login_required
 def editarPrato(request,prato_id):
-    prato = get_object_or_404(Prato,id=prato_id)
+    prato = get_object_or_404(Prato,id=prato_id,usuario=request.user)
     form = FormPrato(instance=prato)
     if request.method == "POST":
         form = FormPrato(request.POST,instance=prato)
@@ -98,11 +101,13 @@ def editarPrato(request,prato_id):
         'form':form,
         }
     return render(request,'ficha_tecnica/pratos/editar_prato.html',context=context)
+@login_required
 def removerPrato(request,prato_id):
-    prato = get_object_or_404(Prato,id=prato_id)
+    prato = get_object_or_404(Prato,id=prato_id,uuario=request.user)
     prato.delete()
     return redirect('../../')
 ##ingredientes
+@login_required
 def adicionarIngrediente(request):
     id_usr = request.user.id
     if request.method == "GET":
@@ -116,9 +121,10 @@ def adicionarIngrediente(request):
         'form': form,
     }
     return render(request,'ficha_tecnica/ingredientes/adicionar_ingrediente.html',context=context)
+@login_required
 def editarIngrediente(request,id_ingrediente):
     id_usr = request.user.id
-    prato = get_object_or_404(Prato,id=request.session['prato_id'])
+    prato = get_object_or_404(Prato,id=request.session['prato_id'],usuario=request.user)
     ingrediente = get_object_or_404(Ingredientes,prato=prato,id=id_ingrediente)
     form = FormIngredientes(instance=ingrediente,id_usr=id_usr)
     if request.method == "POST":
@@ -137,8 +143,11 @@ def editarIngrediente(request,id_ingrediente):
         'form':form,
     }
     return render(request,'ficha_tecnica/ingredientes/editar_ingrediente.html',context=context)
+@login_required
 def apagarIngrediente(request,id_ingrediente):
     ingrediente = get_object_or_404(Ingredientes, id=id_ingrediente)
-    ingrediente.delete()
-    id_prato = request.session['prato_id']
-    return redirect('/visualizar_prato/{}/'.format(str(id_prato)))
+    prato = ingrediente.prato
+    if prato.usuario == request.user:
+        ingrediente.delete()
+        id_prato = request.session['prato_id']
+        return redirect('/visualizar_prato/{}/'.format(str(id_prato)))
