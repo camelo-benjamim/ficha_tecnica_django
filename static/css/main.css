@@ -1,0 +1,28 @@
+@import url('bootstrap.css');
+
+
+.btn-success{
+    background-color: rgba(0, 0, 0, 0.9);
+    color:rgba(41, 243, 132, 0.9);
+}
+.btn-success:hover{
+    background-color:rgba(41, 243, 132, 0.9);
+    color: rgb(240, 235, 235);
+
+}
+.text-primary{
+    color:rgba(127, 224, 208, 0.9) !important;
+}
+.text-danger{
+    color:rgba(197, 98, 172, 0.9) !important;
+}
+.btn-primary{
+    background-color: rgba(41, 243, 132, 0.9);
+    color: black;
+    border-color: black;
+}
+.btn-primary:hover{
+    background-color:rgba(3, 3, 3, 0.9);
+    color: rgb(203, 31, 238);
+
+}
