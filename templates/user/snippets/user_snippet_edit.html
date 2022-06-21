@@ -3,7 +3,7 @@
 
 <div class="container-sm">
     <h1 class="text-center my-2 text-danger">Editar Informações:</h1>
-    <form action="." method="post" class="row justify-content-center" enctype="multipart/form-data">
+    <form action="." method="post" class="row justify-content-center text-primary" enctype="multipart/form-data">
     {% csrf_token %}
     <h2 class="text-center my-2">Informações de identificação</h2>
     <div class="w-50">
@@ -26,6 +26,12 @@
       <div class="row justify-content-center">
         <a class="text-center text-danger" href="/auth/user/password_change/">Editar Senha de usuário</a>
       </div>
+    <h2 class="mt-4 text-center">Deletar usuário: </h2>
+      <div class="row justify-content-center">
+        <a class="text-center text-danger" href="/auth/user_delete/">Deletar usuário</a>
+      </div>
     </form>
+    </div>
+  </div>
   </div>
   </div>

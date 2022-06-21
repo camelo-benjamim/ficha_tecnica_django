@@ -21,8 +21,41 @@
     color: black;
     border-color: black;
 }
+.text-warning{
+    color:rgba(255, 115, 21, 0.863) !important;
+}
+.text-secondary{
+    color:rgba(41, 243, 132, 0.9) !important;
+}
 .btn-primary:hover{
     background-color:rgba(3, 3, 3, 0.9);
     color: rgb(203, 31, 238);
 
+}
+.bg-danger{
+    background-color: rgb(163, 28, 190) !important;
+}
+
+.btn-danger{
+    background-color: rgb(163, 28, 190);
+    color: black;
+    border-color: black;
+}
+.btn-danger:hover{
+    background-color:rgba(3, 3, 3, 0.9);
+    color: rgb(203, 31, 238);
+
+}
+.form-control {
+    background-color: #000000!important;
+    border-color: #96d3ec;
+    color: rgb(30, 236, 168);
+  }
+
+.form-control:active,
+.form-control:focus,
+.form-control:focus:active {
+  background-color: #96d3ec!important;
+  border-color: #96d3ec;
+  color: white;
 }

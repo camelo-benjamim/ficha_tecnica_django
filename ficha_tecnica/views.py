@@ -103,7 +103,7 @@ def editarPrato(request,prato_id):
     return render(request,'ficha_tecnica/pratos/editar_prato.html',context=context)
 @login_required
 def removerPrato(request,prato_id):
-    prato = get_object_or_404(Prato,id=prato_id,uuario=request.user)
+    prato = get_object_or_404(Prato,id=prato_id,usuario=request.user)
     prato.delete()
     return redirect('../../')
 ##ingredientes

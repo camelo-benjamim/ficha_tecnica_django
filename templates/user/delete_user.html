@@ -8,22 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
     <title>Apagar Cadastro</title>
   </head>
-  <body>
+  <body class="bg-dark">
   <!--NAVBAR-->
   {% include 'user/user_navbars/delete_usr.html'%}
   <!--FORM-->
   <div class="container-sm my-4" style="max-width: 500px;">
-    <div class="container-fluid">
+    <div class="container-fluid text-primary">
       {% if id_usr%}
       <h2> Seu email é:</h2>
-      <h2><strong class="bg-warning text-dark">{{id_usr}}</strong></h2>
+      <h2><strong class="bg-success text-dark">{{id_usr}}</strong></h2>
       <h4> Por favor, repita-o abaixo para prosseguir </h4>
       {%endif%}
-      <form action="." method="post" class="form-group">
+      <form action="." method="post" class="form-group text-danger">
       {% csrf_token %}
       {{form|crispy}}
       <!--NEED AJAX/JS-->
@@ -38,7 +37,7 @@
 </div>
 
     <!--JAVA SCRIPT-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
     <!----->
   </body>
 </html>

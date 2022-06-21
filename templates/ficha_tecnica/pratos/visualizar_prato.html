@@ -8,31 +8,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
 
     <title>{{nome_do_prato}}</title>
   </head>
-  <body>
+  <body class="bg-dark">
         {% include 'ficha_tecnica/navbars/navbar_logged.html'%}
         <div class="container-sm text-center">
-            <h2 class="text-center my-4">{{nome_do_prato}}:</h2>
+            <h2 class="text-center my-4 text-secondary">{{nome_do_prato}}:</h2>
             <div class="row justify-content-center">
-                <div class="card my-1 mx-4" style="width: 18rem;">
+                <div class="card my-1 mx-4" style="width: 18rem; background-color: black;">
                     <div class="card-body">
-                      <h5 class="card-title">Custo de produção</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">R$ {{custo_total}}</h6>
+                      <h5 class="card-title text-danger">Custo de produção</h5>
+                      <h6 class="card-subtitle mb-2 text-secondary">R$ {{custo_total}}</h6>
                     </div>
               </div>
-                <div class="card my-1 mx-4" style="width: 18rem;">
+                <div class="card my-1 mx-4" style="width: 18rem; background-color: black;">
                     <div class="card-body">
-                      <h5 class="card-title">Lucro total: </h5>
-                      <h6 class="card-subtitle mb-2 text-muted">R$ {{lucro}}</h6>
+                      <h5 class="card-title text-danger">Lucro total: </h5>
+                      <h6 class="card-subtitle mb-2 text-secondary">R$ {{lucro}}</h6>
                     </div>
                   </div>
-                <div class="card my-1 mx-4" style="width: 18rem;">
+                <div class="card my-1 mx-4" style="width: 18rem; background-color: black;">
                     <div class="card-body">
-                      <h5 class="card-title">CMV: </h5>
-                      <h6 class="card-subtitle mb-2 text-muted">{{cmv}} % </h6>
+                      <h5 class="card-title text-danger">CMV: </h5>
+                      <h6 class="card-subtitle mb-2 text-secondary">{{cmv}} % </h6>
                     </div>
               </div>
             </div>
@@ -42,11 +42,11 @@
             <h2 class="text-center my-2 text-danger">Ingredientes: </h2>
             <div class="row justify-content-center">
                 {% for ingrediente in ingredientes %}
-                    <div class="card  my-2 mx-4" style="width: 18rem;">
+                    <div class="card  my-2 mx-4" style="width: 18rem; background-color: black;">
                         <div class="card-body">
-                          <h5 class="card-title text-center">{{ingrediente}}</h5>
+                          <h5 class="card-title text-center text-warning">{{ingrediente}}</h5>
                           <div class="container text-center">
-                            <a href="../../editar_ingrediente/{{ingrediente.id}}/" class="btn btn-secondary">Editar</a>
+                            <a href="../../editar_ingrediente/{{ingrediente.id}}/" class="btn btn-primary">Editar</a>
                             <a href="../../apagar_ingrediente/{{ingrediente.id}}/" class="btn btn-danger">Apagar</a>
                           </div>
                       </div>
@@ -63,7 +63,7 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
