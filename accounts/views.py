@@ -22,7 +22,7 @@ def SignUp(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=email, password=raw_password)
             login(request, user)
-            return redirect("/")
+            return redirect("/donate")
             ##REDIRECIONAR PARA DASHBOARD
         
         context = {

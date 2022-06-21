@@ -151,3 +151,7 @@ def apagarIngrediente(request,id_ingrediente):
         ingrediente.delete()
         id_prato = request.session['prato_id']
         return redirect('/visualizar_prato/{}/'.format(str(id_prato)))
+
+
+def donate(request):
+    return render(request,'donate/donate.html')

@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+    <title>Doação</title>
+  </head>
+  <body class="bg-dark text-primary">
+   {% include 'ficha_tecnica/navbars/navbar_logged.html'%}
+   <div class="container">
+    <h2 class="text-center my-2">Obrigado por se cadastrar!</h2>
+    <h4 class="text-center">Para mantermos a aplicação funcionando, gratuitamente e de livre acesso ao público
+      <br>pedimos uma doação de um valor simbólico de R$ 20.00, porém caso não possa contribuir não há problema.
+      pedimos apenas que compartilhe para seus amigos e familiares que o app pode vir a ajudar.
+    </h4>
+   <div class="row justify-content-center">
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush" style="background-color: black;">
+        <li class="list-group-item"><img src="{% static 'img/pix_logo.png' %}" class="img-thumbnail mr-1" style="max-width: 40px;"> Pix (chave aleatória): <strong>6b066085-75b8-41de-80b6-7201b1fefeab</strong> </li>
+        <li class="list-group-item"><img src="{% static 'img/bitcoin_logo.png' %}" class="img-thumbnail mr-1" style="max-width: 40px;"> BITCOIN: <strong>bc1quuf7xh88e774pc3scmhm09wny8wj0mxa46kuqu</strong> </li>
+        <li class="list-group-item"><img src="{% static 'img/ethereum_logo.png' %}" class="img-thumbnail mr-1" style="max-width: 40px;"> ETHEREUM: <strong>0xc4E6D1a45F93e0ca7C034F594099f2699c875C2d</strong></li>
+      </ul>
+    </div>
+    </div>
+   </div>
+   <div class="container text-center mt-4 mb-2">
+    <a href="../" type="button" class="btn btn-success btn-lg">Prosseguir</a>
+   </div>
+  </div>
+    {% include 'user/footers/responsive.html' %}
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+  </body>
+</html>

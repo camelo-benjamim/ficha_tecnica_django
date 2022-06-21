@@ -15,5 +15,6 @@ urlpatterns = [
     path('adicionar_ingrediente/',adicionarIngrediente),
     path('editar_ingrediente/<int:id_ingrediente>/',editarIngrediente),
     path('apagar_ingrediente/<int:id_ingrediente>/',apagarIngrediente),
+    path('donate/',donate),
 
 ]
